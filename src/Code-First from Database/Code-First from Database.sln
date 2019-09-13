@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29209.62
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAppCRUD", "WebAppCRUD\WebAppCRUD.csproj", "{D47FDEFF-9F4F-4A53-A179-6A4852C0C49A}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WestWindSystem", "WestWindSystem\WestWindSystem.csproj", "{B58C8B48-81BF-4767-B539-13A4D8817BA7}"
 EndProject
 Global
@@ -15,6 +17,10 @@ Global
 		{B58C8B48-81BF-4767-B539-13A4D8817BA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B58C8B48-81BF-4767-B539-13A4D8817BA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B58C8B48-81BF-4767-B539-13A4D8817BA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D47FDEFF-9F4F-4A53-A179-6A4852C0C49A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D47FDEFF-9F4F-4A53-A179-6A4852C0C49A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D47FDEFF-9F4F-4A53-A179-6A4852C0C49A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D47FDEFF-9F4F-4A53-A179-6A4852C0C49A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
