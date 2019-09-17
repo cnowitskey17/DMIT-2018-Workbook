@@ -10,34 +10,16 @@
 namespace WebAppCRUD.Admin {
     
     
-    public partial class ViewProducts {
+    public partial class ViewCategories {
         
         /// <summary>
-        /// ProductGridView control.
+        /// CategoryRepeater control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView ProductGridView;
-        
-        /// <summary>
-        /// ProductDataSource control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource ProductDataSource;
-        
-        /// <summary>
-        /// SupplierDataSource control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource SupplierDataSource;
+        protected global::System.Web.UI.WebControls.Repeater CategoryRepeater;
         
         /// <summary>
         /// CategoryDataSource control.

@@ -21,14 +21,15 @@ namespace WestWindSystem.BLL
                 return context.Products.ToList();
             }
         }
-        public List<Supplier> ListSupplierss()
+        [DataObjectMethod(DataObjectMethodType.Select)]
+        public List<Supplier> ListSuppliers()
         {
             using (var context = new WestWindContext())
             {
                 return context.Suppliers.ToList();
             }
         }
-
+        [DataObjectMethod(DataObjectMethodType.Select)]
         public List<Category> ListCategories()
         {
             using (var context = new WestWindContext())
@@ -36,7 +37,7 @@ namespace WestWindSystem.BLL
                 return context.Categories.ToList();
             }
         }
-
+        [DataObjectMethod(DataObjectMethodType.Select)]
         public List<Address> ListAddresses()
         {
             using (var context = new WestWindContext())

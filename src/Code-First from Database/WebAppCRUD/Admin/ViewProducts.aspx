@@ -3,12 +3,20 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <h1>View Products</h1>
 
-    <asp:GridView ID="ProductGridView" runat="server" CssClass="table table-hover" AutoGenerateColumns="False" DataSourceID="ProductDataSource">
+    <asp:GridView ID="ProductGridView" runat="server" CssClass="table table-hover" AutoGenerateColumns="False" DataSourceID="ProductDataSource" ItemType="WestWindSystem.Entities.Product">
         <Columns>
             <asp:BoundField DataField="ProductID" HeaderText="Product ID" SortExpression="ProductID"></asp:BoundField>
             <asp:BoundField DataField="ProductName" HeaderText="Product Name" SortExpression="ProductName"></asp:BoundField>
-            <asp:BoundField DataField="SupplierID" HeaderText="Supplier ID" SortExpression="SupplierID"></asp:BoundField>
-            <asp:BoundField DataField="CategoryID" HeaderText="Category ID" SortExpression="CategoryID"></asp:BoundField>
+            <asp:TemplateField HeaderText="Supplier">
+                <ItemTemplate>
+                    <asp:DropDownList ID="SupplierDropDown" runat="server" SelectedValue="<%# Item.SupplierID %>" DataSourceID="SupplierDataSource" Enabled="false" DataTextField="CompanyName" DataValueField="SupplierID"></asp:DropDownList>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Category">
+                <ItemTemplate>
+                    <asp:DropDownList ID="CategoryDropDown" runat="server" SelectedValue="<%# Item.CategoryID %>" DataSourceID="CategoryDataSource" Enabled="false" DataTextField="CategoryName" DataValueField="CategoryID"></asp:DropDownList>
+                </ItemTemplate>
+            </asp:TemplateField>
             <asp:BoundField DataField="QuantityPerUnit" HeaderText="Qty Per Unit" SortExpression="QuantityPerUnit"></asp:BoundField>
             <asp:BoundField DataField="MinimumOrderQuantity" HeaderText="Minimum Order Quantity" SortExpression="MinimumOrderQuantity"></asp:BoundField>
             <asp:BoundField DataField="UnitPrice" HeaderText="Unit Price" SortExpression="UnitPrice"></asp:BoundField>
@@ -17,4 +25,9 @@
         </Columns>
     </asp:GridView>
     <asp:ObjectDataSource runat="server" ID="ProductDataSource" OldValuesParameterFormatString="original_{0}" SelectMethod="ListProducts" TypeName="WestWindSystem.BLL.CRUDController"></asp:ObjectDataSource>
+    <asp:ObjectDataSource runat="server" ID="SupplierDataSource" OldValuesParameterFormatString="original_{0}" SelectMethod="ListSuppliers" TypeName="WestWindSystem.BLL.CRUDController"></asp:ObjectDataSource>
+    <asp:ObjectDataSource runat="server" ID="CategoryDataSource" OldValuesParameterFormatString="original_{0}" SelectMethod="ListCategories" TypeName="WestWindSystem.BLL.CRUDController"></asp:ObjectDataSource>
+
+
+
 </asp:Content>
