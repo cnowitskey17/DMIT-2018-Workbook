@@ -69,6 +69,7 @@
     <Compile Include="Entities\Supplier.cs" />
     <Compile Include="Entities\Territory.cs" />
     <Compile Include="DAL\WestWindContext.cs" />
+    <Compile Include="EntityCustomizations\Address.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
