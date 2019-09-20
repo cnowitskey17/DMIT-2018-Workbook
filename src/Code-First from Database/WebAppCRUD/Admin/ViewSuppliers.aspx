@@ -22,7 +22,7 @@
         </LayoutTemplate>
 
         <InsertItemTemplate>
-            <tr>
+            <tr class="bg-success">
                 <td>
                     <asp:LinkButton ID="AddSupplier" runat="server" CssClass="btn btn-success glyphicon glyphicon-plus" CommandName="Insert">
                         Add
@@ -50,7 +50,7 @@
         </InsertItemTemplate>
 
         <EditItemTemplate>
-            <tr>
+            <tr class="bg-info">
                 <td>
                     <asp:LinkButton ID="UpdateSupplier" runat="server" CssClass="btn btn-success glyphicon glyphicon-ok" CommandName="Update">
                         Save
