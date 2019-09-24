@@ -1,12 +1,16 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ViewSuppliers.aspx.cs" Inherits="WebAppCRUD.Admin.ViewSuppliers" %>
+
+<%@ Register Src="~/UserControls/MessageUserControl.ascx" TagPrefix="my" TagName="MessageUserControl" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
     <h1>View Suppliers</h1>
 
-    <asp:Label ID="MessageLabel" runat="server" />
+    <my:MessageUserControl runat="server" ID="MessageUserControl" />
 
-    <asp:ListView ID="SupplierListView" runat="server" DataSourceID="SuppliersDataSource" InsertItemPosition="FirstItem" 
-        OnItemInserting="SupplierListView_ItemInserting" OnItemInserted="SupplierListView_ItemInserted" ItemType="WestWindSystem.Entities.Supplier">
+    <%--<asp:Label ID="MessageLabel" runat="server" />--%>
+
+    <asp:ListView ID="SupplierListView" runat="server" DataSourceID="SuppliersDataSource" InsertItemPosition="FirstItem" ItemType="WestWindSystem.Entities.Supplier">
         <LayoutTemplate>
             <table class="table table-hover table-condensed">
                 <thead>
@@ -113,8 +117,8 @@
     </asp:ListView>
 
     <asp:ObjectDataSource ID="SuppliersDataSource" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="ListSuppliers" 
-        TypeName="WestWindSystem.BLL.CRUDController" DataObjectTypeName="WestWindSystem.Entities.Supplier" InsertMethod="AddSuppliers" OnInserting="SuppliersDataSource_Inserting"
-        OnInserted="SuppliersDataSource_Inserted"></asp:ObjectDataSource>
+        TypeName="WestWindSystem.BLL.CRUDController" DataObjectTypeName="WestWindSystem.Entities.Supplier" InsertMethod="AddSuppliers" 
+        OnInserted="CheckforExceptions" OnUpdated="CheckforExceptions" OnDeleted="CheckforExceptions"></asp:ObjectDataSource>
 
     <asp:ObjectDataSource ID="AddressDataSource" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="ListAddresses" 
         TypeName="WestWindSystem.BLL.CRUDController"></asp:ObjectDataSource>
