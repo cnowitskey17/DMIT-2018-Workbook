@@ -3,7 +3,10 @@
 
     <h1>View Suppliers</h1>
 
-    <asp:ListView ID="SupplierListView" runat="server" DataSourceID="SuppliersDataSource" InsertItemPosition="FirstItem" ItemType="WestWindSystem.Entities.Supplier">
+    <asp:Label ID="MessageLabel" runat="server" />
+
+    <asp:ListView ID="SupplierListView" runat="server" DataSourceID="SuppliersDataSource" InsertItemPosition="FirstItem" 
+        OnItemInserting="SupplierListView_ItemInserting" OnItemInserted="SupplierListView_ItemInserted" ItemType="WestWindSystem.Entities.Supplier">
         <LayoutTemplate>
             <table class="table table-hover table-condensed">
                 <thead>
@@ -109,6 +112,10 @@
         </ItemTemplate>
     </asp:ListView>
 
-    <asp:ObjectDataSource ID="SuppliersDataSource" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="ListSuppliers" TypeName="WestWindSystem.BLL.CRUDController" DataObjectTypeName="WestWindSystem.Entities.Supplier" InsertMethod="AddSuppliers"></asp:ObjectDataSource>
-    <asp:ObjectDataSource ID="AddressDataSource" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="ListAddresses" TypeName="WestWindSystem.BLL.CRUDController"></asp:ObjectDataSource>
+    <asp:ObjectDataSource ID="SuppliersDataSource" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="ListSuppliers" 
+        TypeName="WestWindSystem.BLL.CRUDController" DataObjectTypeName="WestWindSystem.Entities.Supplier" InsertMethod="AddSuppliers" OnInserting="SuppliersDataSource_Inserting"
+        OnInserted="SuppliersDataSource_Inserted"></asp:ObjectDataSource>
+
+    <asp:ObjectDataSource ID="AddressDataSource" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="ListAddresses" 
+        TypeName="WestWindSystem.BLL.CRUDController"></asp:ObjectDataSource>
 </asp:Content>
