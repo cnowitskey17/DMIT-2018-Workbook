@@ -1,7 +1,6 @@
 <Query Kind="Expression">
   <Connection>
-    <ID>9f795fec-6525-43c5-bbd0-2819df27768a</ID>
-    <Persist>true</Persist>
+    <ID>697cb14f-6eec-4ebe-8740-fe67fb0700ec</ID>
     <Server>.</Server>
     <Database>WestWind</Database>
   </Connection>
@@ -9,10 +8,12 @@
 
 // List all the employees who are managers.
 from person in Employees
-//   thing      thing[] 
+//   employee     Table<Employees>  
 where person.ReportsToChildren.Count > 0
-//     thing    thing[]
+//     Employee    IEnumerable<Employee>
 select new
 {
-  Name = person.FirstName + " " + person.LastName
+  Name = person.FirstName + " " + person.LastName,
+  Subordinates = 	from sub in person.ReportsToChildren
+  					select sub.FirstName + " " + sub.LastName
 }
