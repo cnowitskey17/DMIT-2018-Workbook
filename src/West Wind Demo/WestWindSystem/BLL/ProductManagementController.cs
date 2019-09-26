@@ -40,6 +40,35 @@ namespace WestWindSystem.BLL
         }
         #endregion
 
+        #region Supplier Products
+
+        [DataObjectMethod(DataObjectMethodType.Select)]
+        public List<SupplierCategory> ListSupplierProducts()
+        {
+            using (var context = new WestWindContext())
+            {
+                // Apply my LinqPad query to this method
+                var result = from sup in context.Suppliers
+                              select new SupplierCategory
+                              {
+                                  CompanyName = sup.CompanyName,
+                                  ContactName = sup.ContactName,
+                                  Phone = sup.Phone,
+                                  Products = from item in sup.Products
+                                             select new SupplierSummary
+                                             {
+                                                 Name = item.ProductName,
+                                                 Category = item.Category.CategoryName,
+                                                 Price = item.UnitPrice,
+                                                 Quantity = item.QuantityPerUnit
+                                             }
+                              };
+                return result.ToList();
+            }
+        }
+
+        #endregion
+
         #region Product Info CRUD Processing
         #region Supplier/Category Supporting Lists
         [DataObjectMethod(DataObjectMethodType.Select)]
