@@ -26,7 +26,7 @@
             </table>
         </LayoutTemplate>
 
-                <InsertItemTemplate>
+        <InsertItemTemplate>
             <tr class="bg-success">
                 <td>
                     <asp:LinkButton ID="AddAddress" runat="server" CssClass="btn btn-success glyphicon glyphicon-plus" CommandName="Insert">
@@ -53,6 +53,33 @@
             </tr>
         </InsertItemTemplate>
 
+        <EditItemTemplate>
+            <tr class="bg-info">
+                <td>
+                    <asp:LinkButton ID="UpdateAddress" runat="server" CssClass="btn btn-success glyphicon glyphicon-ok" CommandName="Update">
+                        Save
+                    </asp:LinkButton>
+                    <asp:LinkButton ID="CancelUpdate" runat="server" CssClass="btn btn-default" CommandName="Cancel">
+                        Cancel
+                    </asp:LinkButton>
+                </td>
+                <td>
+                    <asp:TextBox ID="Address" runat="server" Text="<%# BindItem.Address1 %>" placeholder="Enter Address"/>
+                </td>
+                <td>
+                    <asp:TextBox ID="City" runat="server" Text="<%# BindItem.City %>" placeholder="Contact name"/>
+                    <asp:TextBox ID="PostalCode" runat="server" Text="<%# BindItem.PostalCode %>" placeholder="Job title"/>
+                    <asp:TextBox ID="Country" runat="server" Text="<%# BindItem.Country %>" TextMode="Email" placeholder="Email"/>
+                </td>
+                <td>
+                    <asp:DropDownList ID="RegionDropDown" runat="server" DataSourceID="RegionDataSource" AppendDataBoundItems="true" DataTextField="FullRegion" DataValueField="RegionID"
+                        SelectedValue="<%# BindItem.Region %>">
+                        <asp:ListItem Value="">[Select region on file]</asp:ListItem>
+                    </asp:DropDownList>
+                </td>
+            </tr>
+        </EditItemTemplate>
+
         <ItemTemplate>
             <tr>
                 <td>
@@ -71,9 +98,7 @@
                 <br />
                 <td><%# Item.Country %></td>
                 <br />
-                <td>
-                     
-                </td>
+                <td><%# Item.Region %></td>
 
             </tr>
         </ItemTemplate>
