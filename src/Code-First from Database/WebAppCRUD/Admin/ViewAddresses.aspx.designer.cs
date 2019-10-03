@@ -13,6 +13,15 @@ namespace WebAppCRUD.Admin {
     public partial class View_Addresses {
         
         /// <summary>
+        /// MessageUserControl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FreeCode.WebApp.UserControls.MessageUserControl MessageUserControl;
+        
+        /// <summary>
         /// AddressListView control.
         /// </summary>
         /// <remarks>

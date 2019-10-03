@@ -75,6 +75,3 @@ select new
 from data in Suppliers
 where 	data.Address.Country == "Canada" || data.Address.Country == "USA" || data.Address.Country == "Mexico"
 select data.CompanyName
-
-
-

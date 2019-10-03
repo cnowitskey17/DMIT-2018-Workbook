@@ -1,4 +1,10 @@
-<Query Kind="Expression" />
+<Query Kind="Expression">
+  <Connection>
+    <ID>697cb14f-6eec-4ebe-8740-fe67fb0700ec</ID>
+    <Server>.</Server>
+    <Database>WestWind</Database>
+  </Connection>
+</Query>
 
 // Practice questions - do each one in a separate LinqPad query.
 
@@ -16,7 +22,13 @@
  * 
  */
  
- 
+from reg in Regions
+select new 
+{
+	Region = reg.RegionDescription,
+	Employees = from emp in reg.Region
+				select new
+}
 
 // B) List all the Customers by Company Name. Include the Customer's company name, contact name, and other contact information in the result.
 
