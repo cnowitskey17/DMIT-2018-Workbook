@@ -9,39 +9,8 @@
    <%-- Drag this from "UserControls" folder--%>
     <uc1:MessageUserControl runat="server" ID="MessageUserControl" />
 
-    <asp:ListView ID="AddressListView" runat="server" DataSourceID="AddressDataSource" InsertItemPosition="LastItem" ItemType="WestWindSystem.Entities.Address" DataKeyNames="AddressID">
+    <asp:ListView ID="AddressListView" runat="server" DataSourceID="AddressDataSource" InsertItemPosition="FirstItem"  DataKeyNames="AddressID">
 
-
-        <AlternatingItemTemplate>
-            <tr style="">
-                <td>
-                    <asp:Button runat="server" CommandName="Delete" Text="Delete" ID="DeleteButton" />
-                    <asp:Button runat="server" CommandName="Edit" Text="Edit" ID="EditButton" />
-                </td>
-                <td>
-                    <asp:Label Text='<%# Eval("AddressID") %>' runat="server" ID="AddressIDLabel" /></td>
-                <td>
-                    <asp:Label Text='<%# Eval("Address1") %>' runat="server" ID="Address1Label" /></td>
-                <td>
-                    <asp:Label Text='<%# Eval("City") %>' runat="server" ID="CityLabel" /></td>
-                <td>
-                    <asp:Label Text='<%# Eval("Region") %>' runat="server" ID="RegionLabel" /></td>
-                <td>
-                    <asp:Label Text='<%# Eval("PostalCode") %>' runat="server" ID="PostalCodeLabel" /></td>
-                <td>
-                    <asp:Label Text='<%# Eval("Country") %>' runat="server" ID="CountryLabel" /></td>
-                <td>
-                    <asp:Label Text='<%# Eval("Customers") %>' runat="server" ID="CustomersLabel" /></td>
-                <td>
-                    <asp:Label Text='<%# Eval("Employees") %>' runat="server" ID="EmployeesLabel" /></td>
-                <td>
-                    <asp:Label Text='<%# Eval("Orders") %>' runat="server" ID="OrdersLabel" /></td>
-                <td>
-                    <asp:Label Text='<%# Eval("Suppliers") %>' runat="server" ID="SuppliersLabel" /></td>
-                <td>
-                    <asp:Label Text='<%# Eval("FullAddress") %>' runat="server" ID="FullAddressLabel" /></td>
-            </tr>
-        </AlternatingItemTemplate>
         <EditItemTemplate>
             <tr style="">
                 <td>
@@ -49,8 +18,6 @@
                     <asp:Button runat="server" CommandName="Cancel" Text="Cancel" ID="CancelButton" />
                 </td>
                 <td>
-                    <asp:TextBox Text='<%# Bind("AddressID") %>' runat="server" ID="AddressIDTextBox" /></td>
-                <td>
                     <asp:TextBox Text='<%# Bind("Address1") %>' runat="server" ID="Address1TextBox" /></td>
                 <td>
                     <asp:TextBox Text='<%# Bind("City") %>' runat="server" ID="CityTextBox" /></td>
@@ -60,25 +27,9 @@
                     <asp:TextBox Text='<%# Bind("PostalCode") %>' runat="server" ID="PostalCodeTextBox" /></td>
                 <td>
                     <asp:TextBox Text='<%# Bind("Country") %>' runat="server" ID="CountryTextBox" /></td>
-                <td>
-                    <asp:TextBox Text='<%# Bind("Customers") %>' runat="server" ID="CustomersTextBox" /></td>
-                <td>
-                    <asp:TextBox Text='<%# Bind("Employees") %>' runat="server" ID="EmployeesTextBox" /></td>
-                <td>
-                    <asp:TextBox Text='<%# Bind("Orders") %>' runat="server" ID="OrdersTextBox" /></td>
-                <td>
-                    <asp:TextBox Text='<%# Bind("Suppliers") %>' runat="server" ID="SuppliersTextBox" /></td>
-                <td>
-                    <asp:TextBox Text='<%# Bind("FullAddress") %>' runat="server" ID="FullAddressTextBox" /></td>
             </tr>
         </EditItemTemplate>
-        <EmptyDataTemplate>
-            <table runat="server" style="">
-                <tr>
-                    <td>No data was returned.</td>
-                </tr>
-            </table>
-        </EmptyDataTemplate>
+
         <InsertItemTemplate>
             <tr style="">
                 <td>
@@ -86,8 +37,6 @@
                     <asp:Button runat="server" CommandName="Cancel" Text="Clear" ID="CancelButton" />
                 </td>
                 <td>
-                    <asp:TextBox Text='<%# Bind("AddressID") %>' runat="server" ID="AddressIDTextBox" /></td>
-                <td>
                     <asp:TextBox Text='<%# Bind("Address1") %>' runat="server" ID="Address1TextBox" /></td>
                 <td>
                     <asp:TextBox Text='<%# Bind("City") %>' runat="server" ID="CityTextBox" /></td>
@@ -97,26 +46,15 @@
                     <asp:TextBox Text='<%# Bind("PostalCode") %>' runat="server" ID="PostalCodeTextBox" /></td>
                 <td>
                     <asp:TextBox Text='<%# Bind("Country") %>' runat="server" ID="CountryTextBox" /></td>
-                <td>
-                    <asp:TextBox Text='<%# Bind("Customers") %>' runat="server" ID="CustomersTextBox" /></td>
-                <td>
-                    <asp:TextBox Text='<%# Bind("Employees") %>' runat="server" ID="EmployeesTextBox" /></td>
-                <td>
-                    <asp:TextBox Text='<%# Bind("Orders") %>' runat="server" ID="OrdersTextBox" /></td>
-                <td>
-                    <asp:TextBox Text='<%# Bind("Suppliers") %>' runat="server" ID="SuppliersTextBox" /></td>
-                <td>
-                    <asp:TextBox Text='<%# Bind("FullAddress") %>' runat="server" ID="FullAddressTextBox" /></td>
             </tr>
         </InsertItemTemplate>
+
         <ItemTemplate>
             <tr style="">
                 <td>
                     <asp:Button runat="server" CommandName="Delete" Text="Delete" ID="DeleteButton" />
                     <asp:Button runat="server" CommandName="Edit" Text="Edit" ID="EditButton" />
                 </td>
-                <td>
-                    <asp:Label Text='<%# Eval("AddressID") %>' runat="server" ID="AddressIDLabel" /></td>
                 <td>
                     <asp:Label Text='<%# Eval("Address1") %>' runat="server" ID="Address1Label" /></td>
                 <td>
@@ -127,18 +65,9 @@
                     <asp:Label Text='<%# Eval("PostalCode") %>' runat="server" ID="PostalCodeLabel" /></td>
                 <td>
                     <asp:Label Text='<%# Eval("Country") %>' runat="server" ID="CountryLabel" /></td>
-                <td>
-                    <asp:Label Text='<%# Eval("Customers") %>' runat="server" ID="CustomersLabel" /></td>
-                <td>
-                    <asp:Label Text='<%# Eval("Employees") %>' runat="server" ID="EmployeesLabel" /></td>
-                <td>
-                    <asp:Label Text='<%# Eval("Orders") %>' runat="server" ID="OrdersLabel" /></td>
-                <td>
-                    <asp:Label Text='<%# Eval("Suppliers") %>' runat="server" ID="SuppliersLabel" /></td>
-                <td>
-                    <asp:Label Text='<%# Eval("FullAddress") %>' runat="server" ID="FullAddressLabel" /></td>
             </tr>
         </ItemTemplate>
+
         <LayoutTemplate>
             <table runat="server">
                 <tr runat="server">
@@ -152,11 +81,6 @@
                                 <th runat="server">Region</th>
                                 <th runat="server">PostalCode</th>
                                 <th runat="server">Country</th>
-                                <th runat="server">Customers</th>
-                                <th runat="server">Employees</th>
-                                <th runat="server">Orders</th>
-                                <th runat="server">Suppliers</th>
-                                <th runat="server">FullAddress</th>
                             </tr>
                             <tr runat="server" id="itemPlaceholder"></tr>
                         </table>
@@ -175,41 +99,13 @@
                 </tr>
             </table>
         </LayoutTemplate>
-        <SelectedItemTemplate>
-            <tr style="">
-                <td>
-                    <asp:Button runat="server" CommandName="Delete" Text="Delete" ID="DeleteButton" />
-                    <asp:Button runat="server" CommandName="Edit" Text="Edit" ID="EditButton" />
-                </td>
-                <td>
-                    <asp:Label Text='<%# Eval("AddressID") %>' runat="server" ID="AddressIDLabel" /></td>
-                <td>
-                    <asp:Label Text='<%# Eval("Address1") %>' runat="server" ID="Address1Label" /></td>
-                <td>
-                    <asp:Label Text='<%# Eval("City") %>' runat="server" ID="CityLabel" /></td>
-                <td>
-                    <asp:Label Text='<%# Eval("Region") %>' runat="server" ID="RegionLabel" /></td>
-                <td>
-                    <asp:Label Text='<%# Eval("PostalCode") %>' runat="server" ID="PostalCodeLabel" /></td>
-                <td>
-                    <asp:Label Text='<%# Eval("Country") %>' runat="server" ID="CountryLabel" /></td>
-                <td>
-                    <asp:Label Text='<%# Eval("Customers") %>' runat="server" ID="CustomersLabel" /></td>
-                <td>
-                    <asp:Label Text='<%# Eval("Employees") %>' runat="server" ID="EmployeesLabel" /></td>
-                <td>
-                    <asp:Label Text='<%# Eval("Orders") %>' runat="server" ID="OrdersLabel" /></td>
-                <td>
-                    <asp:Label Text='<%# Eval("Suppliers") %>' runat="server" ID="SuppliersLabel" /></td>
-                <td>
-                    <asp:Label Text='<%# Eval("FullAddress") %>' runat="server" ID="FullAddressLabel" /></td>
-            </tr>
-        </SelectedItemTemplate>
     </asp:ListView>
 
     <asp:ObjectDataSource ID="AddressDataSource" runat="server" DataObjectTypeName="WestWindSystem.Entities.Address" 
         DeleteMethod="DeleteAddress" InsertMethod="AddAddress" OldValuesParameterFormatString="original_{0}" 
-        SelectMethod="ListAddresses" TypeName="WestWindSystem.BLL.CRUDController" UpdateMethod="UpdateAddress"></asp:ObjectDataSource>
+        SelectMethod="ListAddresses" TypeName="WestWindSystem.BLL.CRUDController" UpdateMethod="UpdateAddress"
+        OnInserted="CheckForExceptions"
+        OnUpdated="CheckForExceptions"
+        OnDeleted="CheckForExceptions"></asp:ObjectDataSource>
 
-    <asp:ObjectDataSource ID="RegionDataSource" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="ListRegions" TypeName="WestWindSystem.BLL.CRUDController"></asp:ObjectDataSource>
 </asp:Content>
