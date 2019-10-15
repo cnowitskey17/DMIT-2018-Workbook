@@ -1,6 +1,6 @@
 <Query Kind="Expression">
   <Connection>
-    <ID>05a2444e-14ea-4451-ad3d-3398e9ff7898</ID>
+    <ID>697cb14f-6eec-4ebe-8740-fe67fb0700ec</ID>
     <Server>.</Server>
     <Database>WestWind</Database>
   </Connection>
