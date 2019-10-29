@@ -25,13 +25,54 @@ The information shown here will be displayed in a **ListView**, using the *EditI
     - Use a custom command name of "ShipOrder" and handle in the ListVIews `ItemCommand` event.
     - Gather instructions from the form of the products to be shipped and the shipping information. This is sent to the following method in the BLL fro processing:
     ```csharp
-    void OrderProcessingController.ShipOrder(int orderId, ShippingDirections shipping, List<OrderItem> items)
+    void OrderProcessingController.ShipOrder(int orderId, ShippingDirections shipping, List<ShippedItem> items)
     ```
 ## POCOs
 
+The POCOS/DTOs are simply classes that will hold our data when we are performing Queries or issuing comamnds to the bll. 
+
 ### Commands
 
+```csharp
+public class ShippingDirections
+{
+    public int ShipperId {get; set;}
+    public string TrackingCode {get; set;}
+    public decimal? FreightCharge {get; set;} //? means nullable
+}
+```
+
+```csharp
+public class ShippedItems
+{
+    public int ProductId {get; set;}
+    public int ShipQuantity {get; set;}
+}
+```
+
 ### Queries
+
+```csharp
+public class ShipperSelection
+{
+    public int ShipperId {get; set;}
+    public string Shipper {get; set;}
+
+}
+```
+```csharp
+public class OutstandingOrder
+{
+    public int OrderId {get; set;}
+    public string ShipToName {get; set;}
+    public DateTime OrderDate {get; set;}
+    public DateTime RequiredBy {get; set;}
+    public int DaysRemaining {get;} //Calculated
+    public Ienumberable<OrderItem> OutstandingItems {get; set;}
+    public string FullShippingAddress {get; set;}
+    public string Comments {get; set;}
+}
+```
 
 ```csharp
 //Make the rest for what we did in class i guess
