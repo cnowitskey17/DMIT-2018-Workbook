@@ -17,3 +17,9 @@ Disable HTTPS
     single click web app, change ssl enabled to false in properties
     update all nuget packages except bootsrap (fuck bootstrap)
     restart visual studio
+
+Change connection string 
+    data source to .
+    Initial Catalog to database name
+
+App start folder, open identity config.
