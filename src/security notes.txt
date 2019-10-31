@@ -1,0 +1,19 @@
+Authentication - Are you who you say you are
+Authorization - What are you allowed to do/see?
+
+Authentication Options
+    -Windows Authentication
+        Intranet Applications (network within an organization)
+    -Forms Authentication
+    - OAuth (Open Authentication)
+        3rd party Authentication
+            JWT (JSON Web Token)
+
+Disable HTTPS
+    Double click properties on soultiuon explorer
+    Web tab
+    change project url to http
+    control + s, click yes
+    single click web app, change ssl enabled to false in properties
+    update all nuget packages except bootsrap (fuck bootstrap)
+    restart visual studio
