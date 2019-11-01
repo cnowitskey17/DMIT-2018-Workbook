@@ -1,4 +1,4 @@
-namespace WebApp.Entities
+namespace DemoSystem.Entities
 {
     using System;
     using System.Collections.Generic;

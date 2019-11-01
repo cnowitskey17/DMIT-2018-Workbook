@@ -1,14 +1,15 @@
-namespace WebApp.Entities
+namespace DemoSystem.DAL
 {
     using System;
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
+    using DemoSystem.Entities;
 
-    public partial class DemoDB : DbContext
+    public partial class DemoContext : DbContext
     {
-        public DemoDB()
-            : base("name=DemoDB")
+        public DemoContext()
+            : base("name=DefaultConnection")
         {
         }
 

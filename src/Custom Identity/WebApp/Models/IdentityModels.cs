@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity; // for the Database.SetInitializer() method
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
@@ -6,6 +7,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using WebApp.Admin.Security;
 using WebApp.Models;
 
 namespace WebApp.Models
@@ -13,6 +15,13 @@ namespace WebApp.Models
     // You can add User data for the user by adding more properties to your User class, please visit https://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
+        #region My Custom User Properties
+        // All of these will be added as extra columns on the
+        // AspNetUser database table
+        public int? PersonId { get; set; }
+        public string FavoriteColor { get; set; }
+        #endregion
+
         public ClaimsIdentity GenerateUserIdentity(ApplicationUserManager manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
@@ -32,6 +41,8 @@ namespace WebApp.Models
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
+            // Set our database initialization strategy
+            Database.SetInitializer(new SecurityDBContextInitializer());
         }
 
         public static ApplicationDbContext Create()
