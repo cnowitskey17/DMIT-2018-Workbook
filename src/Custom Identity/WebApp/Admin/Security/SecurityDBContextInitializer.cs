@@ -7,6 +7,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using WebApp.Models;
+using static WebApp.Admin.Security.Settings;
 
 namespace WebApp.Admin.Security
 {
@@ -27,9 +28,9 @@ namespace WebApp.Admin.Security
             // The Rolemanager<T> and RoleStore<T> are BLL classes that give flexability to the design/structure of how we;re using Asp.Net Identity.
             //The IdentityRole is an Entity class that represents a securtiy role.
 
-            // TODO: Move these hard-coded security roles to Wev.config
-            roleManager.Create(new IdentityRole { Name = "Administrators" });
-            roleManager.Create(new IdentityRole { Name = "Registered Users" });
+            // TODO: Move these hard-coded security roles to Web.config
+            foreach(var role in DefaultSecurityRoles)
+                roleManager.Create(new IdentityRole { Name = role });
             #endregion
 
             #region Seed the users
@@ -37,21 +38,21 @@ namespace WebApp.Admin.Security
             var adminUser = new ApplicationUser
             {
                 //ToDO: Move hard-coded values to web.config
-                UserName = "WebAdmin",
-                Email = "Elections2020@Hackers.ru",
+                UserName = AdminUserName,
+                Email = AdminEmail,
                 EmailConfirmed = true
             };
 
             //Instantiate the BLL user manager
             var userManager = new ApplicationUserManager(new UserStore<ApplicationUser>(context));
             // - The aplicationUsermanager is a BLL class in this website's App_Start/IdeneityConfig.cs
-            var result = userManager.Create(adminUser, "Pa$$w0rd"); // TODO: Move password
+            var result = userManager.Create(adminUser, AdminPassword); // TODO: Move password
             if(result.Succeeded)
             {
                 //Get the Id that was generated for the user we created/added
-                var adminId = userManager.FindByName("WebAdmin").Id;
+                var adminId = userManager.FindByName(AdminUserName).Id;
                 //Add the user to Administratiors role
-                userManager.AddToRole(adminId, "Administrators");
+                userManager.AddToRole(adminId, AdminRole);
             }
 
             //Create the other user accounts for all the people in my Demo database
@@ -66,11 +67,11 @@ namespace WebApp.Admin.Security
                     EmailConfirmed = true,
                     PersonId = person.PersonID
                 };
-                result = userManager.Create(user, "Pa$$word1");
+                result = userManager.Create(user, TempPassword);
                 if(result.Succeeded)
                 {
                     var userId = userManager.FindByName(user.UserName).Id;
-                    userManager.AddToRole(userId, "Registered Users");
+                    userManager.AddToRole(userId, UserRole);
                 }
             }
             #endregion
