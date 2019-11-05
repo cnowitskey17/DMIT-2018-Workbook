@@ -13,7 +13,8 @@ namespace WebApp.Admin.Security
     //You can learn about Database Initializtion strategies in EF6 via
     // http://www.entityframworktutorial.net/code-first/database-initialization-strategy-in-code-first.aspx
 
-        /// <summary>Provide funcionality for setting up the database for the ApplicationDbContext. The specific functionality is to create the database if it does not exist.</summary>
+        /// <summary>Provide funcionality for setting up the database for the ApplicationDbContext. 
+        /// The specific functionality is to create the database if it does not exist.</summary>
     public class SecurityDBContextInitializer : CreateDatabaseIfNotExists<ApplicationDbContext>
     {
         protected override void Seed(ApplicationDbContext context)
