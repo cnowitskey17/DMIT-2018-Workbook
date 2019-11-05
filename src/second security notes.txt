@@ -3,3 +3,9 @@
 -add using statement for settings in SecurityDBContextInitializer
 -add foreach loop too create user roles 
 -change hard coded values in SecurityDBContextInitializer (usernames, passwords etc)
+-change login aspx from "email" to "username", delete textmode="email"
+-in Login.aspx.cx change Email.Text to UserName.Text
+-add webform with master page into security folder
+-add link in sitmaster
+-in sitemaster.cs add method called Page_PreRender
+-in default.aspx.cs add if statement
