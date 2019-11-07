@@ -1,0 +1,2 @@
+- in register.aspx copy the email field and replace all "Email" with "UserName"
+- in register.aspx.cs change first Email.Text to UserName.Text
