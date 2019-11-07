@@ -6,7 +6,7 @@ namespace DemoSystem.Entities
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class Person
+    internal partial class Person
     {
         public int PersonID { get; set; }
 

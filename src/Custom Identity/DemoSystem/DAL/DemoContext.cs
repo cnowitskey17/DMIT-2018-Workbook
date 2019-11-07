@@ -6,7 +6,7 @@ namespace DemoSystem.DAL
     using System.Linq;
     using DemoSystem.Entities;
 
-    public partial class DemoContext : DbContext
+    internal partial class DemoContext : DbContext
     {
         public DemoContext()
             //Remember to change this to Default connection test writing me
