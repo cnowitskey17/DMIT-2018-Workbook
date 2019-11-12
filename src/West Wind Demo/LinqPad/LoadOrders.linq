@@ -27,8 +27,26 @@ var result =
 		ShipToName = sale.ShipName,
 		OrderDate = sale.OrderDate.Value,//add to nullable field
 		RequiredBy = sale.RequiredDate.Value,
-		//OutstandingItems
-		//FullShippingAddress
+		OutstandingItems = from item in sale.OrderDetails
+						   where item.Product.SupplierID == supplierId
+		                   select new OrderItem
+						   {
+						   		ProductID = item.ProductID,
+								ProductName = item.Product.ProductName,
+								Qty = item.Quantity,
+								QtyPerUnit = item.Product.QuantityPerUnit,
+								//TODO: Figure out the outstanding quantity
+//								Outstanding = (from ship in item.Order.Shipments
+//											  from shipItem in ship.ManifestItems
+//											  where shipItem.ProductID == item.ProductID
+//											  select shipItem.ShipQuantity).Sum()
+						   },
+		FullShippingAddress = //TODO: How to use shipaddressID,
+								sale.Customer.Address.Address + Environment.NewLine +
+								sale.Customer.Address.City + ", " +
+								sale.Customer.Address.Region + Environment.NewLine +
+								sale.Customer.Address.Country + " " +
+								sale.Customer.Address.PostalCode,
 		Comments = sale.Comments
 	};
 	return result.ToList();
