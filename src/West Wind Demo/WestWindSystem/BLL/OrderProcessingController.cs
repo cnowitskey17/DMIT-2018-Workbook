@@ -10,6 +10,7 @@ namespace WestWindSystem.BLL
 {
     public class OrderProcessingController
     {
+        #region Queries
         public List<OutstandingOrder> LoadOrders(int supplierId)
         {
             throw new NotImplementedException();
@@ -35,7 +36,9 @@ namespace WestWindSystem.BLL
                 return result.ToList();
             }
         }
+        #endregion
 
+        #region Commands
         public void ShipOrder(int orderId, ShippingDirections shipping, List<ShippedItem> items)
         {
             throw new NotImplementedException();
@@ -55,5 +58,6 @@ namespace WestWindSystem.BLL
                     Check if order is complete; if so, update Order.Shipped
              */
         }
+        #endregion
     }
 }
