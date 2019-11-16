@@ -10,13 +10,13 @@ Suppliers will be interacting with a page that shows the following information.
 
 The information shown here will be displayed in a **ListView**, using the *EditItemTemplate* as the part that shows the details for a given order.
 
-##Events and Interactions
+## Events and Interactions
 
 ![Plan](Shipping-Orders-plan.svg)
 - ![](1.svg) - **Page_Load** event
     - ![](A.svg) - Supplier/Contact names obtained from who the logged-in user is
     - ![](B.svg) - Load the ListView data from the BLL 
-        - **`List<OutstandingOrder> OrderProcessingController.LoadOrders (supplierId)`**
+        - **`List<OutstandingOrder> OrderProcessingController.LoadOrders(supplierId)`**
     - ![](c.svg) - Load the list of shippers from BLL
         - **`List<ShipperSelection OrderProcessingController.ListShippers()`**
 - ![](2.svg) - **EditCommand** click event
@@ -88,7 +88,7 @@ public class OrderItem
 
 ## BLL Processing
 
-All product shipments are handled by the **`OrderProcessingController`**. Is supports the following methods.
+All product shipments are handled by the **`OrderProcessingController`**. It supports the following methods.
 
 - **`List<OutstandingOrder> LoadOrders(int supplierId)`**
     -**Validation**
