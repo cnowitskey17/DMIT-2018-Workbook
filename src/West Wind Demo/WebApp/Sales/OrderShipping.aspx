@@ -7,19 +7,19 @@
             <p>
                 <asp:Literal ID="SupplierInfo" runat="server" />
             </p>
-            <asp:ListView ID="CurrentOrders" runat="server" DataSourceID="SupplierOrdersDataSource" ItemType="WestWindSystem.DataModels.OutstandingOrder">
+            <asp:ListView ID="CurrentOrders" runat="server" DataSourceID="SupplierOrdersDataSource" OnItemCommand="CurrentOrders_ItemCommand" ItemType="WestWindSystem.DataModels.OutstandingOrder">
 
                 <EditItemTemplate>
                     <tr style="">
                         <td>
                             (<asp:Label Text='<%#Item.OrderId %>' runat="server" ID="OrderIdLabel" />)
-                            <asp:Label Text='<%# Item.ShipToName %>' runat="server" ID="ShipToNameLabel" />
+                            <%# Item.ShipToName %>
 
                         </td>
                         <td>
-                            <asp:Label Text='<%# Item.OrderDate.ToString("MMM dd, yyyy") %>' runat="server" ID="OrderDateLabel" /></td>
+                            <%# Item.OrderDate.ToString("MMM dd, yyyy") %>
                         <td>
-                            <asp:Label Text='<%# Item.RequiredBy.ToString("MMM dd, yyyy") %>' runat="server" ID="RequiredByLabel" />
+                            <%# Item.RequiredBy.ToString("MMM dd, yyyy") %>
                             - in <%# Item.DaysRemaining %> days
                         </td>
                         <td>
@@ -33,9 +33,9 @@
                             <asp:Label ID="OrderComments" runat="server" Text="<%# Item.Comments %>"/>
                             <asp:DropDownList ID="ShipperDropDown" runat="server" DataSourceID="ShippersDataSource" DataTextField="Shipper" DataValueField="ShipperId" 
                                 AppendDataBoundItems="true" CssClass="form-control">
-                                <asp:ListItem Value="">[Select a Shipper]</asp:ListItem>
+                                <asp:ListItem Value="0">[Select a Shipper]</asp:ListItem>
                             </asp:DropDownList>
-                            <asp:GridView ID="ProdictsGridView" runat="server" DataSource="<%# Item.OutstandingItems %>" ItemType="WestWindSystem.DataModels.OrderItem"
+                            <asp:GridView ID="ProductGridView" runat="server" DataSource="<%# Item.OutstandingItems %>" ItemType="WestWindSystem.DataModels.OrderItem"
                                 CssClass="Table table-hover table-condensed" AutoGenerateColumns="false" DataKeyNames="ProductID">
                                 <Columns>
                                     <asp:BoundField DataField="ProductName" HeaderText="Product Name" />
@@ -44,6 +44,7 @@
                                     <asp:BoundField DataField="Outstanding" HeaderText="Outstanding" />
                                     <asp:TemplateField HeaderText="Ship Quantity">
                                         <ItemTemplate>
+                                            <asp:HiddenField ID="ProductId" runat="server" ValidateRequestMode="<%#Item.ProductID %>" />
                                             <asp:TextBox ID="ShipQuantity" runat="server"></asp:TextBox>
                                         </ItemTemplate>
                                     </asp:TemplateField>
@@ -66,14 +67,16 @@
                 <ItemTemplate>
                     <tr style="">
                         <td>
-                            (<asp:Label Text='<%#Item.OrderId %>' runat="server" ID="OrderIdLabel" />)
-                            <asp:Label Text='<%# Item.ShipToName %>' runat="server" ID="ShipToNameLabel" />
+                            <%#Item.OrderId %>
+                            <%# Item.ShipToName %>
 
                         </td>
                         <td>
-                            <asp:Label Text='<%# Item.OrderDate.ToString("MMM dd, yyyy") %>' runat="server" ID="OrderDateLabel" /></td>
+                            <%# Item.OrderDate.ToString("MMM dd, yyyy") %>
+
+                        </td>
                         <td>
-                            <asp:Label Text='<%# Item.RequiredBy.ToString("MMM dd, yyyy") %>' runat="server" ID="RequiredByLabel" />
+                            <%# Item.RequiredBy.ToString("MMM dd, yyyy") %>
                             - in <%# Item.DaysRemaining %> days
                         </td>
                         <td>

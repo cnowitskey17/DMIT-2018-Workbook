@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using WebApp.Admin.Security;
+using WestWindSystem.BLL;
+using WestWindSystem.DataModels;
 
 namespace WebApp.Sales
 {
@@ -20,6 +22,56 @@ namespace WebApp.Sales
                 // TODO: Replace hard-coded supplier ID with the user's supplier ID
                 SupplierInfo.Text = "Temp supplier: ID 2";
 
+            }
+        }
+
+        protected void CurrentOrders_ItemCommand(object sender, ListViewCommandEventArgs e)
+        {
+            if(e.CommandName =="Ship")
+            {
+                // Gather information from the form to send to the BLL for shipping.
+                // ShipOrder(int orderId, ShippingDirections shipping, List<ShippedItem> items)
+                int orderId = 0;
+                Label ordIdLabel = e.Item.FindControl("OrderIdLabel") as Label; //safe cast the control object to a label object
+                if (ordIdLabel != null)
+                    orderId = int.Parse(ordIdLabel.Text);
+
+                ShippingDirections shipInfo = new ShippingDirections(); //blank object
+                DropDownList shipViaDropDown = e.Item.FindControl("ShipperDropDown") as DropDownList;
+                if (shipViaDropDown != null)
+                    shipInfo.ShipperId = int.Parse(shipViaDropDown.SelectedValue);
+                TextBox textTrackingCode = e.Item.FindControl("TrackingCode") as TextBox;
+                if (textTrackingCode != null)
+                    shipInfo.TrackingCode = textTrackingCode.Text;
+                decimal price;
+                TextBox textFreightCharge = e.Item.FindControl("FreightCharge") as TextBox;
+                if (textFreightCharge != null && decimal.TryParse(textFreightCharge.Text, out price))
+                    shipInfo.FreightCharge = price;
+
+                List<ShippedItem> goods = new List<ShippedItem>();
+                GridView gv = e.Item.FindControl("ProductGridView") as GridView;
+                if(gv != null)
+                {
+                    foreach(GridViewRow row in gv.Rows)
+                    {
+                        //get product id and ship qty
+                        short quantity;
+                        HiddenField prodId = row.FindControl("ProductId") as HiddenField;
+                        TextBox qty = row.FindControl("ShipQuantity") as TextBox;
+                        if(prodId != null && qty != null && short.TryParse(qty.Text, out quantity))
+                        {
+                            ShippedItem item = new ShippedItem
+                            {
+                                Product = prodId.Value,
+                                Quantity = quantity
+                            };
+                            goods.Add(item);
+                        }
+                    }
+                }
+
+                var controller = new OrderProcessingController();
+                controller.ShipOrder(orderId, shipInfo, goods);
             }
         }
     }
