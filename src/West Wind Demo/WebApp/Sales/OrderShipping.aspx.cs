@@ -56,7 +56,7 @@ namespace WebApp.Sales
                     {
                         //get product id and ship qty
                         short quantity;
-                        HiddenField prodId = row.FindControl("ProductId") as HiddenField;
+                        HiddenField prodId = row.FindControl("ProductID") as HiddenField;
                         TextBox qty = row.FindControl("ShipQuantity") as TextBox;
                         if(prodId != null && qty != null && short.TryParse(qty.Text, out quantity))
                         {

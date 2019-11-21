@@ -50,7 +50,7 @@
                                     <asp:BoundField DataField="Outstanding" HeaderText="Outstanding" />
                                     <asp:TemplateField HeaderText="Ship Quantity">
                                         <ItemTemplate>
-                                            <asp:HiddenField ID="ProductId" runat="server" Value="<%#Item.ProductID %>" />
+                                            <asp:HiddenField ID="ProductID" runat="server" Value="<%#Item.ProductID %>" />
                                             <asp:TextBox ID="ShipQuantity" runat="server"></asp:TextBox>
                                         </ItemTemplate>
                                     </asp:TemplateField>

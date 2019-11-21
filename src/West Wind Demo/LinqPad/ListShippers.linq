@@ -1,6 +1,6 @@
 <Query Kind="Program">
   <Connection>
-    <ID>c4264b7a-952b-4bdd-948f-b22fe85e3447</ID>
+    <ID>8b805d54-0169-4933-af92-694e83a46842</ID>
     <Persist>true</Persist>
     <Server>.</Server>
     <Database>WestWind</Database>

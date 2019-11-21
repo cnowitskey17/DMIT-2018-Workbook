@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WestWindSystem.DAL;
 using WestWindSystem.DataModels;
+using WestWindSystem.Entities;
 
 namespace WestWindSystem.BLL
 {
@@ -111,7 +112,7 @@ namespace WestWindSystem.BLL
                     throw new Exception("Freight charge must be either a positive value or no charge");
 
                 //List<ShippedItem> cannot be empty/null
-                if (items == null || items.Any())
+                if (items == null || !items.Any())
                     throw new Exception("No products identified for shipping");
 
                 //The products must be on the order...
@@ -124,17 +125,36 @@ namespace WestWindSystem.BLL
 
                     // TODO: Quantities must be greater than zero and less than or equal to the quantity outstanding
                 }
-            }
-            /*
+                //TODO: Processing (tables/data that must be updated/inserted/deleted/whatever)
+                //1. Create new Shipment
+                var ship = new Shipment
+                {
+                    OrderID = orderId,
+                    ShipVia = shipping.ShipperId,
+                    TrackingCode = shipping.TrackingCode,
+                    FreightCharge = shipping.FreightCharge.HasValue ? shipping.FreightCharge.Value : 0,
+                    ShippedDate = DateTime.Now
+                };
+                // Create manifest items for shipment
+                foreach (var item in items)
+                {
+                    //Notice that I'm adding the manifest item to the shipment object rather than directly to the database context.
+                    //That's because be adding to the Shipment object the correct foreign key fields will be assigned to the new data.
+                    ship.ManifestItems.Add(new ManifestItem
+                    {
+                        ProductID = int.Parse(item.Product),
+                        ShipQuantity = item.Quantity
+                    });
+                }
+                // 3. TODO: Check if order is complete; if so, update Order.Shipped
 
-                    
-                    
-                    
-                TODO: Processing (tables/data that must be updated/inserted/deleted/whatever)
-                    Create new Shipment
-                    Add all manifest items
-                    Check if order is complete; if so, update Order.Shipped
-             */
+                // 4. Add the shipment to the context
+                context.Shipments.Add(ship);
+
+                // 5. Save the changes as a single transaction
+                context.SaveChanges();
+            }
+
         }
         #endregion
     }
