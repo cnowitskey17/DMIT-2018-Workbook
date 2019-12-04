@@ -25,10 +25,11 @@
                             </FooterTemplate>
                             <ItemTemplate>
                                 <tr>
+                                    <th class="col-md-1"><asp:LinkButton ID="test" runat="server" Text="Run" /></th>
                                     <th class="col-md-3"><%# Item.Name %></th>
                                     <th class="col-md-2" style="text-align: right;"><%# $"{Item.Price:C}" %></th>
                                     <th class="col-md-1"></th>
-                                    <th class="col-md-6"><%# Item.Quantity %></th>
+                                    <th class="col-md-2"><%# Item.Quantity %></th>
                                 </tr>
                             </ItemTemplate>
                         </asp:Repeater>
